@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="heading_favorites_page">Favoritter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/favoritter.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page-favs">
+  <!-- Appbar -->
+  <header class="appbar" aria-label="Toppmeny">
+    <a class="backlink" href="profil.html" data-i18n="settings.backlink">
+      Profil
+    </a>
+    <h1 class="appbar__title" data-i18n="heading_favorites_page">
+      Favoritter
+    </h1>
+    <button
+      id="btn-open"
+      class="appbar__action"
+      type="button"
+      aria-label="Legg til favoritt"
+      data-i18n-aria="favorites.add_aria">
+      +
+    </button>
+  </header>
+
+  <main id="main" class="container">
+    <!-- Tom visning -->
+    <section id="empty" class="empty-state" aria-live="polite">
+      <h2 class="visually-hidden" data-i18n="favorites.empty_title">
+        Ingen favoritter enda
+      </h2>
+      <p class="empty-text" data-i18n="favorites.empty_text">
+        Legg til steder du reiser ofte til eller holdeplasser du bruker mye,
+        og bruk dem som snarveier i appen.
+      </p>
+    </section>
+
+    <!-- Lister (skjules når tom) -->
+    <section id="fav-lists" hidden>
+      <h2
+        id="addresses-title"
+        class="group-title"
+        hidden
+        data-i18n="favorites.addresses_title">
+        Adresser
+      </h2>
+      <ul id="fav-addresses" class="list list--grouped" hidden></ul>
+
+      <h2
+        id="stops-title"
+        class="group-title"
+        hidden
+        data-i18n="favorites.stops_title">
+        Stoppesteder
+      </h2>
+      <ul id="fav-stops" class="list list--grouped" hidden></ul>
+    </section>
+  </main>
+
+  <!-- Bunnmeny -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- Modal: steg 1 – Søk/velg -->
+  <dialog id="dlg-search" class="modal" aria-labelledby="dlg-title">
+    <div class="modal__header">
+      <h2 id="dlg-title" data-i18n="favorites.add_title">
+        Legg til ny favoritt
+      </h2>
+      <button
+        id="btn-close-1"
+        type="button"
+        class="linklike"
+        aria-label="Lukk"
+        data-i18n="global.close">
+        Lukk
+      </button>
+    </div>
+
+    <form
+      id="form-search"
+      class="modal__content"
+      method="dialog"
+      role="search"
+      aria-label="Søk etter stoppested eller adresse"
+      data-i18n-aria="favorites.search_aria">
+
+      <fieldset class="inputs">
+        <legend class="visually-hidden" data-i18n="favorites.search_legend">
+          Søk etter stoppested eller adresse
+        </legend>
+
+        <div class="input-wrap">
+          <label for="q" class="visually-hidden" data-i18n="favorites.search_label">
+            Søk
+          </label>
+          <input
+            id="q"
+            name="q"
+            type="search"
+            autocomplete="off"
+            inputmode="search"
+            placeholder="Søk etter stoppested eller adresse"
+            data-i18n-placeholder="favorites.search_placeholder">
+          <button
+            id="clear-q"
+            type="button"
+            class="clear"
+            aria-label="Tøm søk"
+            data-i18n-aria="favorites.clear_search_aria">
+            ×
+          </button>
+        </div>
+      </fieldset>
+
+      <h3 class="subtle" data-i18n="favorites.recent">
+        Sist brukte
+      </h3>
+      <ul id="recent" class="picklist"></ul>
+
+      <h3 id="res-title" class="subtle" hidden data-i18n="favorites.suggestions">
+        Forslag
+      </h3>
+      <ul id="results" class="picklist" aria-labelledby="res-title"></ul>
+    </form>
+  </dialog>
+
+  <!-- Modal: steg 2 – Lagre som -->
+  <dialog id="dlg-save" class="modal" aria-labelledby="save-title">
+    <form id="form-save" class="modal__content" method="dialog">
+      <div class="modal__header">
+        <button id="btn-back" type="button" class="backlink" data-i18n="global.back">
+          Tilbake
+        </button>
+        <h2 id="save-title" data-i18n="favorites.save_title">
+          Adresse
+        </h2>
+        <button id="btn-cancel" type="button" class="linklike" data-i18n="global.cancel">
+          Avbryt
+        </button>
+      </div>
+
+      <section class="save-intro">
+        <h3 data-i18n="favorites.save_question">
+          Lagre adressen som favoritt?
+        </h3>
+        <p data-i18n="favorites.save_text">
+          Favoritter gir deg reiseforslag fra forsiden, og er enkle å finne igjen
+          når du søker på en reise eller avgang.
+        </p>
+      </section>
+
+      <fieldset class="radio-list">
+        <legend class="visually-hidden" data-i18n="favorites.save_as">
+          Lagre som
+        </legend>
+
+        <label class="radio-row">
+          <input type="radio" name="kind" value="home" checked>
+          <span class="radio-label" data-i18n="favorites.home">Hjem</span>
+        </label>
+
+        <label class="radio-row">
+          <input type="radio" name="kind" value="work">
+          <span class="radio-label" data-i18n="favorites.work">Jobb</span>
+        </label>
+
+        <label class="radio-row">
+          <input type="radio" name="kind" value="other">
+          <span class="radio-label" data-i18n="favorites.other">Annet</span>
+        </label>
+      </fieldset>
+
+      <button type="submit" class="btn btn--primary btn--block" data-i18n="global.save">
+        Lagre
+      </button>
+    </form>
+  </dialog>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script> 
+  <script src="js/favoritter.js"></script>
+</body>
+</html>

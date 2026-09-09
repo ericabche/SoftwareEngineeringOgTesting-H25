@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="history.title_tab">Billett­historikk</title>
+
+  <!-- ===================== STILER ===================== -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+
+<body class="page page--history">
+  <!-- ===================== APPBAR ===================== -->
+  <header class="appbar appbar--center" role="banner">
+    <a href="profil.html" class="backlink" data-i18n="history.backlink">
+      Profil
+    </a>
+    <h1 class="appbar__title" data-i18n="heading_ticket_history">
+      Billett­historikk
+    </h1>
+  </header>
+
+  <!-- ===================== HOVEDINNHOLD ===================== -->
+  <main id="main" tabindex="-1">
+    <!-- Faner -->
+    <div class="tabs" role="tablist" aria-label="Visning">
+      <button
+        id="tab-receipts"
+        role="tab"
+        aria-selected="true"
+        aria-controls="panel-receipts"
+        data-i18n="history.tab_receipts">
+        Kvitteringer
+      </button>
+
+      <button
+        id="tab-tickets"
+        role="tab"
+        aria-selected="false"
+        aria-controls="panel-tickets"
+        data-i18n="history.tab_tickets">
+        Billetter
+      </button>
+    </div>
+
+    <!-- ===================== PANEL: KVITTERINGER ===================== -->
+    <section
+      id="panel-receipts"
+      role="tabpanel"
+      aria-labelledby="tab-receipts">
+      <!-- Fylles dynamisk av js/profil.js -->
+    </section>
+
+    <!-- ===================== PANEL: BILLETTER ===================== -->
+    <section
+      id="panel-tickets"
+      role="tabpanel"
+      aria-labelledby="tab-tickets"
+      hidden>
+      <!-- Utløpte billetter fylles inn dynamisk av js/profil.js -->
+    </section>
+  </main>
+
+  <!-- ====================== BUNNMENY ====================== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/profil.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="settings.title_tab">Innstillinger</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/innstillinger.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page-settings">
+
+  <!-- ===== APPBAR / TOPP ===== -->
+  <header class="appbar" role="banner" aria-label="Toppmeny">
+    <a class="backlink" href="profil.html" data-i18n="settings.backlink">
+      Profil
+    </a>
+    <h1 class="appbar__title" data-i18n="settings.heading">
+      Innstillinger
+    </h1>
+    <span class="appbar__spacer" aria-hidden="true"></span>
+  </header>
+
+  <main class="container">
+    <!-- Intro-tekst om hva denne siden brukes til -->
+    <p class="intro-text" data-i18n="settings.intro">
+      Tilpass appen til dine behov og få en mer personlig reiseopplevelse.
+    </p>
+
+    <!-- ===== SEKSJON 1: APP-INNSTILLINGER ===== -->
+    <section class="settings-group" aria-labelledby="settings-app-title">
+      <h2
+        id="settings-app-title"
+        class="group-title visually-hidden"
+        data-i18n="settings.group_app"
+      >
+        Appinnstillinger
+      </h2>
+
+      <ul class="list list--grouped">
+        <li>
+          <a href="#" class="list-item">
+            <span class="label" data-i18n="settings.notifications">
+              Varslinger
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="label" data-i18n="settings.realtime_updates">
+              Oppdateringer i sanntid
+            </span>
+          </a>
+        </li>
+        
+        <li>
+          <a href="sprak.html" class="list-item">
+            <span class="label" data-i18n="settings.language_label">
+              Språk
+            </span>
+            <span
+              class="meta"
+              id="current-language"
+              data-i18n="settings.language_value"
+            >
+              Norsk Bokmål
+            </span>
+          </a>
+        </li>
+              </ul>
+            </section>
+
+    <!-- ===== SEKSJON 2: REISESØK ===== -->
+    <section class="settings-group" aria-labelledby="settings-search-title">
+      <h2
+        id="settings-search-title"
+        class="group-title"
+        data-i18n="settings.group_travel_search"
+      >
+        Reisesøk
+      </h2>
+
+      <ul class="list list--grouped">
+        <li>
+          <a href="#" class="list-item">
+            <span class="label" data-i18n="settings.travel_pace_label">
+              Ditt tempo
+            </span>
+            <span class="meta" data-i18n="settings.travel_pace_value">
+              Middels
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="list-item">
+            <span class="label" data-i18n="settings.extra_transfer_time_label">
+              Ekstra tid ved overganger
+            </span>
+            <span class="meta" data-i18n="settings.extra_transfer_time_value">
+              0 min
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- ===== BUNNMENY ===== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus" aria-hidden="true"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

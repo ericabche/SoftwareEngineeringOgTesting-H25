@@ -1,0 +1,121 @@
+.ticket-history-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 35px 37px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.tabs {
+  display: flex;
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 55px;
+}
+
+.tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #e2e2e2;
+  font-weight: bold;
+}
+
+.months {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.month-section {
+  margin-bottom: 40px;
+}
+
+.month-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 26px;
+}
+
+.tickets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ticket-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 16px;
+  border-radius: 4px;
+}
+
+.ticket-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ticket-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+
+.ticket-date {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: #666;
+}
+
+.ticket-price {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+}
+

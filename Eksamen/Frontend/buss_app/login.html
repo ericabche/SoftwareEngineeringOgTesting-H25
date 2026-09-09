@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="heading_login">Logg inn</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page-login">
+
+  <!-- Appbar -->
+  <header class="appbar" role="banner" aria-label="Toppmeny">
+    <a href="profil.html" class="backlink" data-i18n="nav.profile">
+      Profil
+    </a>
+    <h1 class="appbar__title" data-i18n="heading_login">
+      Logg inn
+    </h1>
+    <span class="appbar__spacer" aria-hidden="true"></span>
+  </header>
+
+  <main class="container">
+    <section class="login-card" aria-labelledby="login-title">
+      <h2 id="login-title" class="login-title" data-i18n="login.title">
+        Logg inn på Østfold Kollektiv
+      </h2>
+      <p class="login-text" data-i18n="login.text">
+        Logg inn for å lagre billettene dine
+      </p>
+
+      <!-- Feilmelding (skjult som standard – fjern "hidden" i JS når innlogging feiler) -->
+      <p class="error-message" role="alert" hidden data-i18n="login.error">
+        Feil e-post/telefon eller passord. Prøv igjen.
+      </p>
+
+      <form action="#" method="post" class="login-form" novalidate>
+        <!-- E-post / telefon -->
+        <div class="field">
+          <label for="username" class="field-label" data-i18n="login.label_username">
+            E-post eller telefonnummer
+          </label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            inputmode="email"
+            autocomplete="username"
+            required
+          />
+        </div>
+
+        <!-- Passord -->
+        <div class="field">
+          <label for="password" class="field-label" data-i18n="login.label_password">
+            Passord
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <!-- Glemt passord -->
+        <div class="field-inline">
+          <a href="glemt-passord.html" class="link-small" data-i18n="heading_forgot_password">
+            Glemt passord?
+          </a>
+        </div>
+
+        <!-- Logg inn-knapp -->
+        <button type="submit" class="btn btn--primary btn--block" data-i18n="login.button">
+          Logg inn
+        </button>
+      </form>
+
+      <!-- Opprett bruker-knapp -->
+      <div class="register-block">
+        <p class="login-footer-text" data-i18n="login.no_account">
+          Har du ikke bruker?
+        </p>
+        <a href="registrer.html" class="btn btn--secondary btn--block" data-i18n="login.create_button">
+          Opprett ny bruker
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bunnmeny -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

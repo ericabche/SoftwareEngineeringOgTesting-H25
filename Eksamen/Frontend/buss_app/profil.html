@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="heading_profile">Profil</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+
+<body class="page page-profil">
+  <!-- ===== APPBAR ===== -->
+  <header class="appbar" role="banner">
+    <h1 class="appbar__title" data-i18n="heading_profile">
+      Profil
+    </h1>
+  </header>
+
+  <main class="container">
+
+    <!-- ====================== PROFILSTATUS ====================== -->
+
+    <!-- Ikke logget inn -->
+    <article id="profile-guest" class="card card--profile">
+      <a href="login.html" class="list-item">
+        <div>
+          <p class="li-title" data-i18n="profile.guest_title">
+            Du er ikke logget inn
+          </p>
+          <p class="li-sub" data-i18n="profile.guest_text">
+            Logg inn eller opprett profil, så tar vi alltid vare på billettene dine
+          </p>
+        </div>
+      </a>
+    </article>
+
+    <!-- Logget inn -->
+    <article id="profile-loggedin" class="card card--profile" hidden>
+      <a href="profil-detaljer.html" class="list-item">
+        <div>
+          <p class="li-title" id="pf-name">Kari Nordmann</p>
+          <p class="li-sub" data-i18n="profile.info_subtitle">
+            Informasjonen din
+          </p>
+        </div>
+      </a>
+    </article>
+
+    <!-- ====================== INNSTILLINGER ====================== -->
+    <nav aria-labelledby="settings-title" class="section">
+      <h2 id="settings-title" class="section-title" data-i18n="profile.section_settings">
+        Innstillinger
+      </h2>
+      <ul class="list list--grouped" role="list">
+        <li>
+          <a href="innstillinger.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_settings">
+              Innstillinger
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ====================== BILLETTER OG BETALING ====================== -->
+    <nav aria-labelledby="tickets-title" class="section">
+      <h2 id="tickets-title" class="section-title" data-i18n="profile.section_tickets">
+        Billetter og betaling
+      </h2>
+      <ul class="list list--grouped" role="list">
+        <li>
+          <a href="billett-historikk.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_ticket_history">
+              Billett­historikk
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="hent-billett.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_get_ticket">
+              Hent billett
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="betalingsmater.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_payments">
+              Betalingsmåter
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ====================== DINE REISER ====================== -->
+    <nav aria-labelledby="travel-title" class="section">
+      <h2 id="travel-title" class="section-title" data-i18n="profile.section_travel">
+        Dine reiser
+      </h2>
+      <ul class="list list--grouped" role="list">
+        <li>
+          <a href="lagrede-reiser.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_saved_trips">
+              Lagrede reiser
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="favoritter.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_favorites">
+              Favoritter
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ====================== HJELP OG KONTAKT ====================== -->
+    <nav aria-labelledby="help-title" class="section">
+      <h2 id="help-title" class="section-title" data-i18n="profile.section_help">
+        Hjelp og informasjon
+      </h2>
+      <ul class="list list--grouped" role="list">
+        <li>
+          <a href="hjelp.html" class="list-item">
+            <span class="li-title" data-i18n="profile.link_help">
+              Hjelp og kontakt
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ====================== LOGG UT ====================== -->
+    <section class="section" id="logout-section" hidden>
+      <button
+        type="button"
+        id="btn-logout"
+        class="btn btn--danger btn--block"
+        data-i18n="profile.btn_logout">
+        Logg ut
+      </button>
+    </section>
+
+  </main>
+
+  <!-- ====================== BUNNMENY ====================== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html" aria-label="Gå til reise" data-i18n-aria="aria_tab_travel">
+      <i class="fa-solid fa-bus" aria-hidden="true"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html" aria-label="Gå til billett" data-i18n-aria="aria_tab_ticket">
+      <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active" aria-current="page"
+       aria-label="Gå til profil" data-i18n-aria="aria_tab_profile">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/profil.js"></script>
+</body>
+</html>

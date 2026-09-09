@@ -1,0 +1,34 @@
+-- Sett riktig schema
+SET search_path TO transit, public;
+
+--  Test at alle linjer finnes
+SELECT id, number, name
+FROM line
+ORDER BY number;
+
+-- Test at alle stopp er koblet riktig
+SELECT l.number AS linje, COUNT(*) AS antall_stopp, MIN(seq) AS min_seq, MAX(seq) AS max_seq
+FROM line_stop ls
+JOIN line l ON l.id = ls.line_id
+GROUP BY l.number
+ORDER BY l.number;
+
+-- Test at tidspunktene faktisk finnes (stop_time)
+SELECT l.number, COUNT(st.*) AS antall_tider
+FROM stop_time st
+JOIN trip t ON t.id = st.trip_id
+JOIN line l ON l.id = t.line_id
+GROUP BY l.number
+ORDER BY l.number;
+
+-- Test at visningen fungerer (fra viewet)
+SELECT linje_nr, direction, service, COUNT(*) AS rader
+FROM vw_rutetider
+GROUP BY linje_nr, direction, service
+ORDER BY linje_nr, direction, service;
+
+-- Se eksempelrute med klokkeslett
+SELECT *
+FROM vw_rutetider
+WHERE linje_nr = '633'
+ORDER BY trip_id, seq;

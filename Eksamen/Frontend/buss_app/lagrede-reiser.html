@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="heading_saved_trips">Lagrede reiser</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/lagrede-reiser.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page-saved">
+
+  <!-- Appbar -->
+  <header class="appbar" role="banner" aria-label="Toppmeny">
+    <a class="backlink" href="profil.html" data-i18n="nav.profile">
+      Profil
+    </a>
+    <h1 class="appbar__title" data-i18n="heading_saved_trips">
+      Lagrede reiser
+    </h1>
+    <span class="appbar__spacer" aria-hidden="true"></span>
+  </header>
+
+  <main class="container">
+    <!-- Tom-tilstand (kun tekst) -->
+    <section class="empty-state" aria-live="polite">
+      <p class="empty-text" data-i18n="saved.empty_text">
+        Nå kan du lagre reisene du søker på. Har du lagret en reise, dukker den opp her.
+      </p>
+    </section>
+  </main>
+
+  <!-- Bunnmeny -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

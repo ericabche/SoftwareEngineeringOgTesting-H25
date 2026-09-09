@@ -1,0 +1,166 @@
+.home-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding-bottom: 97px;
+}
+
+.map-container {
+  width: 100%;
+  height: 528px;
+  position: relative;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #c2c2c2;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+}
+
+.map-line {
+  transform: rotate(53deg);
+}
+
+.map-line-2 {
+  transform: rotate(-53deg);
+}
+
+.map-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: #000;
+  z-index: 1;
+}
+
+.route-search {
+  margin: 32px;
+  background-color: #c2c2c2;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.search-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.search-button {
+  flex: 1;
+  background-color: #e2e2e2;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.search-button:hover {
+  opacity: 0.8;
+}
+
+.search-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+}
+
+.search-input {
+  background-color: #e2e2e2;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-input:hover {
+  opacity: 0.8;
+}
+
+.divider {
+  height: 1px;
+  background-color: #000;
+  margin: 4px 0;
+}
+
+.search-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: #d9d9d9;
+  border-radius: 4px;
+}
+
+.nearby-section,
+.favorites-section {
+  margin: 32px;
+}
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.nearby-placeholder,
+.favorites-placeholder {
+  background-color: #c2c2c2;
+  height: 124px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.placeholder-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+}
+
+.add-favorite-btn {
+  width: 100%;
+  background-color: #c2c2c2;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-favorite-btn:hover {
+  opacity: 0.8;
+}
+

@@ -1,0 +1,193 @@
+.single-ticket-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 45px 44px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.cancel-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.7;
+}
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  margin-bottom: 23px;
+}
+
+.ticket-selection {
+  margin-bottom: 67px;
+}
+
+.ticket-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #d9d9d9;
+  padding: 24px;
+  border-radius: 4px;
+}
+
+.ticket-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.ticket-option input[type="radio"] {
+  margin-top: 4px;
+  cursor: pointer;
+}
+
+.ticket-option span:first-of-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.ticket-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #666;
+  display: block;
+  margin-top: 4px;
+}
+
+.passenger-selection {
+  margin-bottom: 40px;
+}
+
+.passenger-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #d9d9d9;
+  padding: 24px;
+  border-radius: 4px;
+}
+
+.passenger-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #c2c2c2;
+}
+
+.passenger-item:last-child {
+  border-bottom: none;
+}
+
+.passenger-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.passenger-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.passenger-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+.passenger-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.passenger-controls button {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #c2c2c2;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.passenger-controls button:hover {
+  opacity: 0.8;
+}
+
+.passenger-controls span {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #000;
+  min-width: 20px;
+  text-align: center;
+}
+
+.purchase-button {
+  width: 100%;
+  height: 52px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+  margin-top: 40px;
+}
+
+.purchase-button:hover {
+  opacity: 0.8;
+}
+

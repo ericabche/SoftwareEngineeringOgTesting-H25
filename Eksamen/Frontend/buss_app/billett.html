@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="ticket.title_tab">Billetter</title>
+
+  <!-- Felles stil -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Side-spesifikk stil -->
+  <link rel="stylesheet" href="css/billett.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+  <meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="page-billett">
+  <!-- ===================== Appbar ===================== -->
+  <header class="appbar">
+    <h1 data-i18n="heading_ticket">Billetter</h1>
+  </header>
+
+  <!-- ===================== Hovedinnhold ===================== -->
+  <main id="content" class="content" tabindex="-1">
+    <!-- Aktive / kommende billetter -->
+    <section aria-labelledby="active-title" class="section">
+      <h2 id="active-title" class="sr-only" data-i18n="ticket.active_title">
+        Aktive billetter
+      </h2>
+
+      <!-- Karusell for aktive -->
+      <section
+        id="ticket-carousel"
+        class="carousel"
+        hidden
+        aria-label="Aktive billetter"
+        data-i18n-aria="ticket.active_aria"
+      >
+        <div id="tc-viewport" class="carousel__viewport">
+          <div id="tc-track" class="carousel__track"></div>
+        </div>
+        <div
+          id="tc-dots"
+          class="carousel__dots"
+          role="tablist"
+          aria-label="Billetter"
+          data-i18n-aria="ticket.dots_aria"
+        ></div>
+      </section>
+
+      <!-- Tomtilstand -->
+      <article id="empty-card" class="card card--empty" aria-live="polite">
+        <h3 class="sr-only" data-i18n="ticket.empty_active_heading">
+          Ingen aktive billetter
+        </h3>
+        <p data-i18n="ticket.empty_active_text">
+          Du har ingen gyldige billetter
+        </p>
+        <div class="shimmer-row" aria-hidden="true"></div>
+        <div class="shimmer-row" aria-hidden="true"></div>
+      </article>
+
+      <!-- Liste for kommende (JS fyller inn) -->
+      <div id="ticket-list"></div>
+    </section>
+
+    <!-- Hentekoder -->
+    <section aria-labelledby="pickup-title" class="section" id="pickup-section" hidden>
+      <h2 id="pickup-title" data-i18n="ticket.pickup_heading">
+        Hentekoder
+      </h2>
+      <ul id="pickup-list" class="list list--cards"></ul>
+    </section>
+
+    <!-- ===================== Hurtigkjøp ===================== -->
+    <section aria-labelledby="quick-title" class="section">
+      <header class="section-head">
+        <h2 id="quick-title" data-i18n="ticket.quick_heading">
+          Hurtigkjøp
+        </h2>
+        <button
+          class="link-button"
+          type="button"
+          data-action="see-all"
+          aria-haspopup="dialog"
+          data-i18n="ticket.quick_see_all"
+        >
+          Se alle
+        </button>
+      </header>
+
+      <ul id="quick-list" class="list list--cards"></ul>
+    </section>
+
+    <!-- Primær CTA -->
+    <section class="section section--cta">
+      <button
+        id="btn-new"
+        class="btn btn--primary btn--xl"
+        type="button"
+        aria-haspopup="dialog"
+        data-i18n="ticket.new_cta"
+      >
+        NY BILLETT
+      </button>
+    </section>
+  </main>
+
+  <!-- ===================== Bunnmeny ===================== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html" class="active">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== Sheet (modal/bunnark) ===================== -->
+  <div
+    id="sheet"
+    class="sheet"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="sheet-title"
+    hidden
+  >
+    <div
+      class="sheet__grab"
+      role="separator"
+      aria-label="Dra"
+      data-i18n-aria="ticket.sheet_grab_aria"
+    ></div>
+
+    <div class="sheet__body" role="document">
+      <!-- Steg-header -->
+      <header class="sheet__header">
+        <button
+          class="iconbtn"
+          type="button"
+          data-nav="back"
+          aria-label="Tilbake"
+          data-i18n-aria="global.back"
+        >
+          ‹
+        </button>
+        <h2
+          id="sheet-title"
+          class="sheet__title"
+          data-i18n="ticket.sheet_title"
+        >
+          Velg billett
+        </h2>
+        <button
+          class="iconbtn"
+          type="button"
+          data-nav="close"
+          aria-label="Lukk"
+          data-i18n-aria="global.close"
+        >
+          ✕
+        </button>
+      </header>
+
+      <!-- Alle paneler styres av JS: setPanels(...) -->
+      <div class="panels" aria-live="polite">
+        <!-- ===== 1) Velg type ===== -->
+        <section
+          class="panel"
+          data-panel="type"
+          aria-label="Velg billettype"
+          data-i18n-aria="ticket.panel_type_aria"
+        >
+          <div class="type-grid">
+          <button class="type-card" type="button" data-type="single">
+            <span class="type-ico" aria-hidden="true">
+              <i class="fa-solid fa-ticket"></i>
+            </span>
+            <span data-i18n="ticket.type_single">Enkeltbillett</span>
+          </button>
+
+          <button class="type-card" type="button" data-type="period">
+            <span class="type-ico type-ico--double" aria-hidden="true">
+              <i class="fa-solid fa-ticket"></i>
+              <i class="fa-solid fa-ticket"></i>
+            </span>
+            <span data-i18n="ticket.type_period">Periodebillett</span>
+          </button>
+          </div>
+
+          <button
+            id="btn-buy-others"
+            class="card card--ghost buy-others-btn"
+            type="button"
+          >
+            <span class="li-main">
+              <strong data-i18n="ticket.buy_others_title">
+                Kjøp til andre
+              </strong>
+              <span
+                class="buy-others-sub"
+                data-i18n="ticket.buy_others_sub"
+              >
+                Send billetten til en annen telefon
+              </span>
+            </span>
+          </button>
+
+          <h3 class="subhead" data-i18n="ticket.other_tickets_heading">
+            Andre billetter
+          </h3>
+          <ul class="list list--simple">
+            <li>
+              <span>Enkeltbillett, linje 9 til Ås/Ski</span>
+            </li>
+            <li>
+              <span>Enkeltbillett, linje 9 til Oslo</span>
+            </li>
+            <li>
+              <span>Periodebillett, linje 9 til Ås/Ski</span>
+            </li>
+            <li>
+              <span>Periodebillett, linje 9 til Oslo</span>
+            </li>
+            <li>
+              <span>…</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== 2) Velg enkeltbillett ===== -->
+        <section
+          class="panel"
+          data-panel="single"
+          aria-label="Velg enkeltbillett"
+          hidden
+          data-i18n-aria="ticket.panel_single_aria"
+        >
+          <ul class="list list--cards">
+            <li>
+              <button
+                class="list-item"
+                type="button"
+                data-single="osf"
+              >
+                <span class="li-main">
+                  <span class="li-title" data-i18n="ticket.single_osf_title">
+                    Enkeltbillett
+                  </span>
+                  <span class="li-sub" data-i18n="ticket.single_osf_sub">
+                    For hele Østfold
+                  </span>
+                </span>
+                <span class="chevron" aria-hidden="true">›</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="list-item"
+                type="button"
+                data-single="ng"
+              >
+                <span class="li-main">
+                  <span class="li-title" data-i18n="ticket.single_ng_title">
+                    Enkeltbillett Nedre Glomma
+                  </span>
+                  <span class="li-sub" data-i18n="ticket.single_ng_sub">
+                    For Sarpsborg og Fredrikstad
+                  </span>
+                </span>
+                <span class="chevron" aria-hidden="true">›</span>
+              </button>
+            </li>
+            <li>
+              <button
+                class="list-item"
+                type="button"
+                data-single="ng-fritid"
+              >
+                <span class="li-main">
+                  <span
+                    class="li-title"
+                    data-i18n="ticket.single_ng_fritid_title"
+                  >
+                    Enkeltbillett fritid Nedre Glomma
+                  </span>
+                  <span
+                    class="li-sub"
+                    data-i18n="ticket.single_ng_fritid_sub"
+                  >
+                    Gyldig hverdager fra 17 og helg – kun buss
+                  </span>
+                </span>
+                <span class="chevron" aria-hidden="true">›</span>
+              </button>
+            </li>
+          </ul>
+        </section>
+
+        <!-- ===== 3) Velg reisende (enkelt) ===== -->
+        <section
+          class="panel"
+          data-panel="single-travelers"
+          aria-label="Velg reisende"
+          hidden
+          data-i18n-aria="ticket.panel_travelers_aria"
+        >
+          <h3 class="subhead" data-i18n="ticket.sub_choose_ticket">
+            VELG BILLETT
+          </h3>
+          <div
+            class="card card--ghost"
+            id="chosen-single"
+            data-i18n="ticket.chosen_single_placeholder"
+          >
+            Enkeltbillett
+          </div>
+
+          <h3 class="subhead" data-i18n="ticket.sub_choose_travelers">
+            VELG REISENDE
+          </h3>
+          <ul class="counter-list" id="traveler-counters"></ul>
+
+          <footer class="sheet__footer">
+            <div class="total" aria-live="polite">
+              <span data-i18n="ticket.total_label">Totalpris</span>
+              <strong id="total-amount">0 kr</strong>
+            </div>
+            <button
+              id="btn-next-summary"
+              class="btn btn--accent"
+              type="button"
+              disabled
+              data-i18n="global.next"
+            >
+              Neste
+            </button>
+          </footer>
+        </section>
+
+        <!-- ===== 4) Oppsummering ===== -->
+        <section
+          class="panel"
+          data-panel="summary"
+          aria-label="Oppsummering"
+          hidden
+          data-i18n-aria="ticket.panel_summary_aria"
+        >
+          <div class="summary">
+            <div class="sum-price" id="sum-price">0 kr</div>
+            <div
+              class="sum-title"
+              id="sum-title"
+              data-i18n="ticket.summary_title_placeholder"
+            >
+              Enkeltbillett
+            </div>
+          </div>
+
+          <div class="card card--list">
+            <div class="row">
+              <span class="row-label" data-i18n="ticket.summary_travelers_label">
+                Reisende
+              </span>
+              <span class="row-value" id="sum-travelers">–</span>
+            </div>
+            <div class="row">
+              <span class="row-label" data-i18n="ticket.summary_area_label">
+                Gyldig i
+              </span>
+              <span class="row-value" id="sum-area">–</span>
+            </div>
+            <div class="row">
+              <span class="row-label" data-i18n="ticket.summary_start_label">
+                Startdato
+              </span>
+              <button
+                id="startdate-btn"
+                class="row-cta"
+                type="button"
+                data-i18n="ticket.summary_start_now"
+              >
+                Nå
+              </button>
+            </div>
+            <div class="row">
+              <span
+                class="row-label"
+                data-i18n="ticket.summary_payment_label"
+              >
+                Betalingsmåte
+              </span>
+              <button class="row-cta" type="button" disabled>
+                VISA 1234
+              </button>
+            </div>
+          </div>
+
+          <p class="disclaimer" data-i18n="ticket.disclaimer">
+            Gyldig kun på buss. For reisen gjelder Østfold kollektivtrafikk sine
+            <a href="#">billettbetingelser</a> og
+            <a href="#">reisevilkår</a>.
+          </p>
+
+          <footer class="sheet__footer">
+            <button
+              id="btn-confirm"
+              class="btn btn--confirm"
+              type="button"
+              data-i18n="ticket.confirm_purchase"
+            >
+              Bekreft kjøp
+            </button>
+          </footer>
+        </section>
+
+        <!-- ===== 5) Tidsvelger ===== -->
+        <section
+          class="panel"
+          data-panel="timepicker"
+          aria-label="Endre starttidspunkt"
+          hidden
+          data-i18n-aria="ticket.panel_time_aria"
+        >
+          <h3 class="subhead" data-i18n="ticket.time_heading">
+            ENDRE STARTTIDSPUNKT
+          </h3>
+
+          <div class="tp-toolbar">
+            <button
+              id="tp-now"
+              class="link-button"
+              type="button"
+              data-i18n="ticket.time_now"
+            >
+              Nå
+            </button>
+          </div>
+
+          <div class="wheel" role="group" aria-label="Tidshjul">
+            <div class="col" id="col-date" aria-label="Dato" role="listbox"></div>
+            <div class="col" id="col-hour" aria-label="Time" role="listbox"></div>
+            <div class="col" id="col-minute" aria-label="Minutt" role="listbox"></div>
+            <div class="wheel-highlight" aria-hidden="true"></div>
+          </div>
+
+          <p class="muted" id="tp-limit-text" style="margin-top:12px"></p>
+
+          <footer class="sheet__footer">
+            <button
+              id="tp-confirm"
+              class="btn btn--accent"
+              type="button"
+              data-i18n="ticket.time_confirm"
+            >
+              Bekreft
+            </button>
+          </footer>
+        </section>
+
+        <!-- ===== 6) Periodebillett (steg 1: reisende) ===== -->
+        <section
+          class="panel"
+          data-panel="period-traveler"
+          aria-label="Velg reisende"
+          hidden
+          data-i18n-aria="ticket.panel_period_traveler_aria"
+        >
+          <h3 class="subhead" data-i18n="ticket.sub_choose_travelers">
+            VELG REISENDE
+          </h3>
+          <ul class="list list--cards" id="period-traveler-list"></ul>
+        </section>
+
+        <!-- ===== 7) Periodebillett (steg 2: produkt) ===== -->
+        <section
+          class="panel"
+          data-panel="period-products"
+          aria-label="Velg billett"
+          hidden
+          data-i18n-aria="ticket.panel_period_products_aria"
+        >
+          <div
+            class="card card--ghost"
+            id="period-chosen-trav"
+            data-i18n="ticket.period_chosen_trav_placeholder"
+          >
+            Reisende
+          </div>
+          <h3 class="subhead" data-i18n="ticket.sub_choose_ticket">
+            VELG BILLETT
+          </h3>
+          <ul class="list list--cards" id="period-products-list"></ul>
+
+          <footer class="sheet__footer">
+            <button
+              id="period-next-summary"
+              class="btn btn--accent"
+              type="button"
+              disabled
+              data-i18n="global.next"
+            >
+              Neste
+            </button>
+          </footer>
+        </section>
+
+        <!-- ===== 8) Billett-detalj ===== -->
+        <section
+          class="panel"
+          data-panel="ticket-detail"
+          aria-label="Billetten din"
+          hidden
+          data-i18n-aria="ticket.panel_detail_aria"
+        >
+          <article class="card">
+            <div class="sum-title" id="td-title">—</div>
+            <h3 class="sum-price" id="td-status">—</h3>
+
+            <ul class="list list--simple" style="margin-top:8px">
+              <li id="td-travelers">—</li>
+              <li id="td-area">—</li>
+              <li id="td-start" data-i18n="ticket.detail_start_prefix">
+                Starter —
+              </li>
+              <li id="td-end" hidden data-i18n="ticket.detail_end_prefix">
+                Gyldig til —
+              </li>
+            </ul>
+
+            <div
+              id="td-qr"
+              class="card card--ghost"
+              style="margin-top:12px;text-align:center"
+            >
+              QR
+            </div>
+          </article>
+
+          <div class="card card--list">
+            <button class="row" id="td-change-start" type="button">
+              <span
+                class="row-label"
+                data-i18n="ticket.detail_change_start"
+              >
+                Endre starttidspunkt
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="row" id="td-receipt" type="button" disabled>
+              <span
+                class="row-label"
+                data-i18n="ticket.detail_receipt"
+              >
+                Vis kvittering
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="row" id="td-notify" type="button" disabled>
+              <span
+                class="row-label"
+                data-i18n="ticket.detail_notifications"
+              >
+                Endre varslinger
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="row" id="td-cancel" type="button" style="color:#d00">
+              <span
+                class="row-label"
+                data-i18n="ticket.detail_cancel"
+              >
+                Kanseller billetten
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+
+          <footer class="sheet__footer">
+            <button
+              id="td-start-now"
+              class="btn btn--accent"
+              type="button"
+              data-i18n="ticket.detail_start_now"
+            >
+              Start nå
+            </button>
+          </footer>
+        </section>
+
+        <!-- ===== 9) Hurtigkjøp – «Se alle» ===== -->
+        <section
+          class="panel"
+          data-panel="quick-all"
+          aria-label="Hurtigkjøp"
+          hidden
+          data-i18n-aria="ticket.panel_quick_all_aria"
+        >
+          <h3 class="subhead" data-i18n="ticket.quick_all_heading">
+            Dine siste kjøp
+          </h3>
+          <ul id="quick-all-list" class="list list--cards"></ul>
+        </section>
+
+        <!-- ===== 10) Kjøp til andre ===== -->
+        <section
+          class="panel"
+          data-panel="buy-others"
+          aria-label="Kjøp til andre"
+          hidden
+          data-i18n-aria="ticket.panel_buy_others_aria"
+        >
+          <h3 class="subhead" data-i18n="ticket.buy_others_heading">
+            Kjøp til andre
+          </h3>
+          <div class="type-grid" style="margin-bottom:8px">
+            <button class="type-card" type="button" data-type="single-others">
+              <span aria-hidden="true">▭</span>
+              <span data-i18n="ticket.type_single">Enkeltbillett</span>
+            </button>
+            <button class="type-card" type="button" data-type="period-others">
+              <span aria-hidden="true">▭▭</span>
+              <span data-i18n="ticket.type_period">Periodebillett</span>
+            </button>
+          </div>
+
+          <h3 class="subhead" data-i18n="ticket.buy_others_suggestions">
+            Forslag
+          </h3>
+          <ul id="buy-others-list" class="list list--cards"></ul>
+        </section>
+
+        <!-- ===== 11) Hentekode-detalj ===== -->
+        <section
+          class="panel"
+          data-panel="pickup-detail"
+          aria-label="Til henting"
+          hidden
+          data-i18n-aria="ticket.panel_pickup_detail_aria"
+        >
+          <article class="card">
+            <div
+              class="sum-title"
+              id="pd-title"
+              data-i18n="ticket.pickup_detail_title"
+            >
+              Til henting
+            </div>
+            <h3 class="sum-price" id="pd-code">—</h3>
+            <ul class="list list--simple" style="margin-top:8px">
+              <li id="pd-product">—</li>
+              <li id="pd-when" data-i18n="ticket.pickup_detail_when_prefix">
+                Kjøpt —
+              </li>
+            </ul>
+          </article>
+
+          <div class="card card--list">
+            <button class="row" id="pd-share" type="button">
+              <span class="row-label" data-i18n="ticket.pickup_share">
+                Del
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+            <button class="row" id="pd-cancel" type="button" style="color:#d00">
+              <span class="row-label" data-i18n="ticket.pickup_cancel">
+                Kanseller
+              </span>
+              <span class="chevron" aria-hidden="true">›</span>
+            </button>
+          </div>
+        </section>
+      </div> <!-- .panels -->
+    </div>   <!-- .sheet__body -->
+  </div>     <!-- #sheet -->
+
+  <!-- ===================== Toast/Busy ===================== -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <div id="busy" class="busy" role="status" aria-live="polite" hidden>
+    <span class="busy__dot" aria-hidden="true"></span>
+    <span class="busy__dot" aria-hidden="true"></span>
+    <span class="busy__dot" aria-hidden="true"></span>
+  </div>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/billett.js" defer></script>
+</body>
+</html>

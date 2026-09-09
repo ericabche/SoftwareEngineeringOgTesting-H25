@@ -1,0 +1,776 @@
+/* ===================== BASIS / TEMA ===================== */
+.page-billett {
+  --bg: #f5f6f8;
+  --card: #fff;
+  --line: #e6e8ec;
+  --muted: #6b7280;
+  --accent: #7A150A;
+  --accent-2: #7A150A;
+  --radius: 16px;
+
+  background: var(--bg);
+  color: #0e1116;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===================== APPBAR & LAYOUT ===================== */
+.page-billett .appbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: 20px 16px 8px;
+}
+
+.page-billett .appbar h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.page-billett .content {
+  padding: 0 16px 120px;
+}
+
+.page-billett .section {
+  margin: 12px 0;
+}
+
+.page-billett .section--cta {
+  margin-top: 24px;
+}
+
+.page-billett .section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.page-billett .link-button {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ===================== KORT, LISTER & TEKST ===================== */
+.page-billett .card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.page-billett .card--empty {
+  text-align: center;
+  color: var(--muted);
+}
+
+.page-billett .card--ghost {
+  background: #fafbfc;
+}
+
+.page-billett .shimmer-row {
+  height: 10px;
+  margin: 10px auto;
+  width: 70%;
+  background: #eceff3;
+  border-radius: 999px;
+}
+
+.page-billett .list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.page-billett .list--cards li + li {
+  margin-top: 10px;
+}
+
+.page-billett .list-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.page-billett .li-title {
+  font-weight: 700;
+}
+
+.page-billett .li-sub {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.page-billett .li-price {
+  font-weight: 700;
+}
+
+.page-billett .chevron {
+  font-size: 22px;
+  color: #9aa1ab;
+}
+
+/* Enkle lister */
+.page-billett .list--simple li {
+  padding: 12px 6px;
+  border-bottom: 1px solid var(--line);
+  color: #111;
+}
+
+/* ===================== KNAPPER ===================== */
+.page-billett .btn {
+  width: 100%;
+  border: 0;
+  border-radius: 14px;
+  padding: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.page-billett .btn--xl {
+  padding: 16px 18px;
+  font-size: 18px;
+}
+
+.page-billett .btn--primary {
+  background: var(--accent-2);
+  color: #fff;
+}
+
+.page-billett .btn--accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.page-billett .btn--confirm {
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 18px;
+}
+
+.page-billett .btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.type-ico i {
+  font-size: 20px;
+  color: #111;
+}
+
+.type-ico--double {
+  display: flex;
+  gap: 4px;
+}
+
+.type-ico--double i:nth-child(2) {
+  margin-left: -6px;  /* litt overlapp */
+}
+
+/* ===================== SHEET / MODAL ===================== */
+.page-billett .sheet[hidden] {
+  display: none;
+}
+
+.page-billett .sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 20%;
+  background: #fff;
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, .18);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  z-index: 20;
+}
+
+.page-billett .sheet__grab {
+  width: 56px;
+  height: 5px;
+  border-radius: 999px;
+  background: #d1d5db;
+  margin: 10px auto;
+}
+
+.page-billett .sheet__body {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 0;
+}
+
+.page-billett .sheet__header {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  padding: 6px 10px 8px;
+}
+
+.page-billett .iconbtn {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 20px;
+  height: 32px;
+}
+
+.page-billett .sheet__title {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.page-billett .panels {
+  overflow: auto;
+  padding: 0 16px 16px;
+}
+
+.page-billett .panel {
+  padding-bottom: 12px;
+}
+
+.page-billett .subhead {
+  font-size: 12px;
+  color: #6b7280;
+  letter-spacing: .06em;
+  margin: 12px 0 8px;
+}
+
+/* Footer i sheet */
+.page-billett .sheet__footer {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #fff;
+  margin: 0 -30px -40px;
+  padding: 10px 20px 32px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.page-billett .total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.page-billett .total span {
+  color: var(--muted);
+}
+
+/* Press innholdet helt opp i sheetet */
+.page-billett .sheet::before {
+  display: none !important;
+}
+
+.page-billett .sheet__grab {
+  height: 3px;
+  margin: 2px auto 4px;
+}
+
+.page-billett .sheet__header {
+  padding: 0 12px 6px !important;
+}
+
+.page-billett .sheet__title {
+  margin: 0 !important;
+}
+
+.page-billett .panels {
+  padding-top: 0 !important;
+}
+
+.page-billett .sheet > *:first-child,
+.page-billett .sheet__body > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* ===================== OPPSUMMERING / DETALJ-KORT ===================== */
+.page-billett .summary {
+  text-align: center;
+  margin: 10px 0 6px;
+}
+
+.page-billett .sum-price {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.page-billett .sum-title {
+  color: #111;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.page-billett .card--list .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-billett .card--list .row:last-child {
+  border-bottom: 0;
+}
+
+.page-billett .row-label {
+  color: #6b7280;
+}
+
+.page-billett .row-cta {
+  border: 0;
+  background: #f2f3f6;
+  border-radius: 12px;
+  padding: 8px 12px;
+  color: #666;
+}
+
+.page-billett .disclaimer {
+  color: #444;
+  font-size: 14px;
+}
+
+/* === Billett-detalj (sheet) === */
+.ticket-detail {
+  padding: 12px 16px 24px;
+}
+
+.td-head {
+  margin-bottom: 12px;
+}
+
+.td-kicker {
+  font-size: 13px;
+  color: var(--muted, #6b7280);
+}
+
+.td-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 2px 0 6px;
+}
+
+.td-lead {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.td-meta {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: 4px;
+  color: var(--muted, #6b7280);
+}
+
+.td-meta li {
+  font-size: 14px;
+}
+
+.card.card--list .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px;
+  border-top: 1px solid rgba(0, 0, 0, .06);
+  background: #fff;
+  width: 100%;
+}
+
+.card.card--list .row:first-child {
+  border-top: 0;
+}
+
+.row .row-label {
+  font-size: 15px;
+}
+
+.row--nav .chevron {
+  font-size: 18px;
+  opacity: .4;
+}
+
+.row--danger {
+  color: #b91c1c;
+}
+
+#td-qr {
+  width: 120px;
+  height: 120px;
+  border: 1.5px dashed rgba(0, 0, 0, .15);
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  margin: 12px 0;
+}
+
+#td-qr[hidden] {
+  display: none !important;
+}
+
+/* ===================== PERIODEBILLETT / LISTER ===================== */
+.page-billett #period-chosen-trav {
+  font-weight: 600;
+}
+
+.page-billett .list--cards .list-item .li-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===================== TELLERE / REISENDE ===================== */
+.page-billett .counter-list {
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-billett .counter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.page-billett .counter .meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-billett .counter .title {
+  font-weight: 700;
+}
+
+.page-billett .counter .hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.page-billett .stepper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-billett .stepper button {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  border: 0;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #eef2ff;
+  color: #222;
+}
+
+.page-billett .stepper .qty {
+  min-width: 16px;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ===================== TIDSVELGER (WHEEL) ===================== */
+.page-billett .wheel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.2fr 0.6fr 0.8fr;
+  gap: 8px;
+  height: 200px;
+  margin: 8px 0;
+  user-select: none;
+}
+
+.page-billett .col {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  padding: 4px 0;
+}
+
+.page-billett .col::-webkit-scrollbar {
+  display: none;
+}
+
+.page-billett .col .opt {
+  height: 44px;
+  display: grid;
+  place-items: center left;
+  padding: 0 12px;
+  font-size: 16px;
+  scroll-snap-align: center;
+  color: #111;
+}
+
+.page-billett .col .opt.muted {
+  color: var(--muted);
+}
+
+.page-billett .wheel-highlight {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 44px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  margin: 0 2px;
+}
+
+.page-billett .tp-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin: 6px 0 8px;
+}
+
+/* timepicker-wheel buffers (må matche JS) */
+.wheel .col {
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+.wheel .col .opt {
+  height: 44px;
+  line-height: 44px;
+}
+
+/* ===================== BILLETTKORT & KARUSELL ===================== */
+.page-billett .ticket {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin: 12px 0;
+  display: grid;
+  gap: 8px;
+}
+
+.page-billett .ticket__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.page-billett .ticket__title {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.page-billett .ticket__meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.page-billett .ticket__status {
+  font-weight: 700;
+}
+
+.page-billett .ticket__qr {
+  width: 96px;
+  height: 96px;
+  border: 1px dashed #cfd4dc;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  color: #9aa1ab;
+  background: #fafbfc;
+}
+
+.page-billett .ticket--expired {
+  opacity: .6;
+}
+
+/* Interaksjon i lister/kort */
+article.ticket {
+  cursor: pointer;
+}
+
+article.ticket:active {
+  transform: scale(0.995);
+}
+
+/* --- Aktive billetter: karusell --- */
+.carousel {
+  margin-bottom: 12px;
+}
+
+.carousel__viewport {
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.carousel__track {
+  display: flex;
+  transition: transform 240ms ease;
+  will-change: transform;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  padding: 16px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+}
+
+.carousel__dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #D1D5DB;
+  border: 0;
+  opacity: .4;
+}
+
+.carousel__dot[aria-selected="true"] {
+  background: #4F46E5;
+  opacity: 1;
+}
+
+/* ===================== KJØP TIL ANDRE ===================== */
+.buy-others-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  padding: 12px 0;
+  gap: 2px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+/* Tekst på to linjer */
+.page-billett .buy-others-btn strong,
+.page-billett .buy-others-btn .buy-others-sub {
+  display: block;
+}
+
+.page-billett .buy-others-btn strong {
+  font-weight: 700;
+}
+
+.page-billett .buy-others-btn .buy-others-sub {
+  margin: 2px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--muted, #6b7280);
+}
+
+/* Skjul knappen mens vi er i 'kjøp til andre'-modus */
+body.is-buying-for-others #btn-buy-others {
+  display: none !important;
+}
+
+/* ===================== TYPEVALG (Enkelt / Periode) ===================== */
+
+.page-billett .type-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.page-billett .type-card {
+  /* gjør dem til store “kort” */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 20px 10px;
+
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: #fff;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.page-billett .type-card .type-ico {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.page-billett .li-title,
+.page-billett .li-sub {
+  display: block; /* tving hver til egen linje */
+}
+
+.page-billett .li-title {
+  font-weight: 700;
+  color: #000;
+}
+
+.page-billett .li-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+/* ===================== A11Y / HJELPEKLASSER ===================== */
+.page-billett .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
+}
+
+/* ===================== RESPONSIVT ===================== */
+@media (min-width: 520px) {
+  .page-billett .content {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .page-billett .sheet {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 520px;
+  }
+}
+

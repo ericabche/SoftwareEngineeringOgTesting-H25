@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="profile.details_title_tab">Profil – Informasjonen din</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page page--profile-detail">
+
+  <!-- ===== APPBAR ===== -->
+  <header class="appbar" role="banner">
+    <nav aria-label="Tilbake">
+      <a
+        class="backlink"
+        href="profil.html"
+        data-i18n="heading_profile"
+      >
+        Profil
+      </a>
+    </nav>
+    <h1
+      class="appbar__title"
+      data-i18n="profile.details_heading"
+    >
+      Informasjonen din
+    </h1>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section" aria-labelledby="pi-title">
+      <h2
+        id="pi-title"
+        class="visually-hidden"
+        data-i18n="profile.details_section_fields"
+      >
+        Profilfelter
+      </h2>
+
+      <ul class="list" role="list">
+        <li>
+          <a class="list-item" href="endre-navn.html">
+            <div class="li-main">
+              <div
+                class="li-title"
+                data-i18n="profile.field_name"
+              >
+                Navn
+              </div>
+              <!-- Selve navnet kommer fra JS / lagring, ikke i18n -->
+              <div class="li-sub" id="pi-name">Kari Nordmann</div>
+            </div>
+            <span class="chevron" aria-hidden="true">›</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="list-item" href="endre-telefon.html">
+            <div class="li-main">
+              <div
+                class="li-title"
+                data-i18n="profile.field_phone"
+              >
+                Telefonnummer
+              </div>
+              <div class="li-sub" id="pi-phone">+47 99 99 99 99</div>
+            </div>
+            <span class="chevron" aria-hidden="true">›</span>
+          </a>
+        </li>
+
+        <li>
+          <a class="list-item" href="endre-epost.html">
+            <div class="li-main">
+              <div
+                class="li-title"
+                data-i18n="profile.field_email"
+              >
+                E-post
+              </div>
+              <div class="li-sub" id="pi-email">eksempel@domene.no</div>
+            </div>
+            <span class="chevron" aria-hidden="true">›</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Ekstra seksjon om sikkerhet (kan brukes senere)
+    <section class="section" aria-labelledby="sec-title">
+      <h2 id="sec-title" class="section-title">Sikkerhet</h2>
+      <ul class="list" role="list">
+        <li>
+          <button type="button" class="list-item" aria-pressed="false">
+            <div class="li-main">
+              <div class="li-title">Tosinnsbekreftelse</div>
+              <div class="li-sub">Legg til ekstra beskyttelse</div>
+            </div>
+          </button>
+        </li>
+      </ul>
+    </section>
+    -->
+  </main>
+
+  <!-- ===== BUNNMENY ===== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a
+      href="reise.html"
+      aria-label="Gå til reise"
+      data-i18n-aria="aria_tab_travel"
+    >
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a
+      href="billett.html"
+      aria-label="Gå til billett"
+      data-i18n-aria="aria_tab_ticket"
+    >
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a
+      href="profil.html"
+      class="active"
+      aria-current="page"
+      aria-label="Gå til profil"
+      data-i18n-aria="aria_tab_profile"
+    >
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+      
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

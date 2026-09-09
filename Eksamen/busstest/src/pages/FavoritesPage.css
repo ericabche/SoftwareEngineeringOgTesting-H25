@@ -1,0 +1,99 @@
+.favorites-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 35px 42px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 76px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.add-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.add-btn:hover {
+  opacity: 0.7;
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.favorite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d9d9d9;
+  padding: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.favorite-item:hover {
+  opacity: 0.8;
+}
+
+.favorite-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.favorite-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.favorite-destination {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #666;
+}
+
+.favorite-arrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  color: #000;
+}
+

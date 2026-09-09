@@ -1,0 +1,110 @@
+.ticket-purchase-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 45px 44px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 72px;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.cancel-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.7;
+}
+
+.ticket-options {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 72px;
+}
+
+.ticket-option {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  padding: 16px;
+  cursor: pointer;
+}
+
+.ticket-option:hover {
+  opacity: 0.8;
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.option-icon {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #000;
+  flex-shrink: 0;
+}
+
+.option-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.option-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.option-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  color: #666;
+}
+
+.option-arrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  color: #000;
+}
+
+.qr-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 251px;
+}
+
+.qr-circle {
+  width: 257px;
+  height: 251px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  border: 2px solid #c2c2c2;
+}
+

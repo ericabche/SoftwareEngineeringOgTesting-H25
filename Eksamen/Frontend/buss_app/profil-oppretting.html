@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="heading_register">Opprett profil</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="css/profil-oppretting.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page page--signup">
+
+  <!-- ===== APPBAR ===== -->
+  <header class="appbar" role="banner">
+    <nav aria-label="Tilbake">
+      <a class="backlink" href="profil.html" data-i18n="global.back">
+        Tilbake
+      </a>
+    </nav>
+    <h1 class="appbar__title" data-i18n="heading_register">
+      Opprett profil
+    </h1>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Stegindikator -->
+    <div
+      class="steps"
+      role="tablist"
+      aria-label="Steg"
+      data-i18n-aria="signup.steps_aria"
+    >
+      <button
+        type="button"
+        role="tab"
+        id="step-dot-1"
+        aria-selected="true"
+        aria-controls="panel-step-1"
+      >
+        <span class="visually-hidden" data-i18n="signup.step1_aria">
+          Steg 1 av 3
+        </span>
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="step-dot-2"
+        aria-selected="false"
+        aria-controls="panel-step-2"
+        tabindex="-1"
+      >
+        <span class="visually-hidden" data-i18n="signup.step2_aria">
+          Steg 2 av 3
+        </span>
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="step-dot-3"
+        aria-selected="false"
+        aria-controls="panel-step-3"
+        tabindex="-1"
+      >
+        <span class="visually-hidden" data-i18n="signup.step3_aria">
+          Steg 3 av 3
+        </span>
+      </button>
+    </div>
+
+    <!-- Opprett profil - stegvis form -->
+    <form class="wizard" id="signup-form" novalidate>
+      <!-- Steg 1: Telefon -->
+      <section
+        id="panel-step-1"
+        role="tabpanel"
+        aria-labelledby="step-dot-1"
+        data-active="true"
+      >
+        <fieldset>
+          <legend class="form-legend" data-i18n="signup.phone_legend">
+            Telefon
+          </legend>
+
+          <label
+            for="phone"
+            class="visually-hidden"
+            data-i18n="signup.phone_label"
+          >
+            Telefonummer
+          </label>
+
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            required
+            pattern="^(?:\\+?47)?\\s?(?:\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}|\\d{8})$"
+            aria-describedby="phone-hint phone-error"
+            placeholder="+47 99 99 99 99"
+            data-i18n-placeholder="signup.phone_placeholder"
+          />
+
+          <p
+            id="phone-hint"
+            class="hint"
+            data-i18n="signup.phone_hint"
+          >
+            Skriv norsk nummer. Både +47 99999999 og 99 99 99 99 er ok.
+          </p>
+
+          <p
+            id="phone-error"
+            class="error"
+            hidden
+            data-i18n="signup.phone_error"
+          >
+            Ugyldig telefonnummer.
+          </p>
+        </fieldset>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn btn--primary btn--block"
+            id="next-1"
+            disabled
+            data-i18n="global.next"
+          >
+            Neste
+          </button>
+        </div>
+      </section>
+
+      <!-- Steg 2: E-post -->
+      <section
+        id="panel-step-2"
+        role="tabpanel"
+        aria-labelledby="step-dot-2"
+      >
+        <fieldset>
+          <legend class="form-legend" data-i18n="signup.email_legend">
+            E-post
+          </legend>
+
+          <label
+            for="email"
+            class="visually-hidden"
+            data-i18n="signup.email_label"
+          >
+            E-post
+          </label>
+
+          <input
+            id="email"
+            name="email"
+            type="email"
+            inputmode="email"
+            autocomplete="email"
+            required
+            aria-describedby="email-error"
+            placeholder="navn@domene.no"
+            data-i18n-placeholder="signup.email_placeholder"
+          />
+
+          <p
+            id="email-error"
+            class="error"
+            hidden
+            data-i18n="signup.email_error"
+          >
+            Ugyldig e-postadresse.
+          </p>
+        </fieldset>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn btn--secondary"
+            id="back-2"
+            data-i18n="global.back"
+          >
+            Tilbake
+          </button>
+          <button
+            type="button"
+            class="btn btn--primary"
+            id="next-2"
+            disabled
+            data-i18n="global.next"
+          >
+            Neste
+          </button>
+        </div>
+      </section>
+
+      <!-- Steg 3: Navn -->
+      <section
+        id="panel-step-3"
+        role="tabpanel"
+        aria-labelledby="step-dot-3"
+      >
+        <fieldset>
+          <legend class="form-legend" data-i18n="signup.name_legend">
+            Navn
+          </legend>
+
+          <label
+            for="first"
+            class="visually-hidden"
+            data-i18n="signup.first_label"
+          >
+            Fornavn
+          </label>
+          <input
+            id="first"
+            name="first"
+            type="text"
+            inputmode="text"
+            autocomplete="given-name"
+            required
+            aria-describedby="name-error"
+            placeholder="Fornavn"
+            data-i18n-placeholder="signup.first_placeholder"
+          />
+
+          <label
+            for="last"
+            class="visually-hidden"
+            data-i18n="signup.last_label"
+          >
+            Etternavn
+          </label>
+          <input
+            id="last"
+            name="last"
+            type="text"
+            inputmode="text"
+            autocomplete="family-name"
+            required
+            aria-describedby="name-error"
+            placeholder="Etternavn"
+            data-i18n-placeholder="signup.last_placeholder"
+          />
+
+          <p
+            id="name-error"
+            class="error"
+            hidden
+            data-i18n="signup.name_error"
+          >
+            Fyll inn både fornavn og etternavn.
+          </p>
+        </fieldset>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="btn btn--secondary"
+            id="back-3"
+            data-i18n="global.back"
+          >
+            Tilbake
+          </button>
+          <button
+            type="submit"
+            class="btn btn--primary"
+            data-i18n="signup.submit"
+          >
+            Opprett profil
+          </button>
+        </div>
+      </section>
+    </form>
+
+    <!-- Ferdigmelding -->
+    <section id="done" hidden aria-live="polite">
+      <h2 class="group-title" data-i18n="signup.done_title">
+        Klar!
+      </h2>
+      <p data-i18n="signup.done_text">
+        Profilen din er opprettet. Du kan nå gå tilbake til profilsiden.
+      </p>
+    </section>
+  </main>
+
+  <!-- ===== BUNNMENY ===== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a
+      href="reise.html"
+      aria-label="Gå til reise"
+      data-i18n-aria="aria_tab_travel"
+    >
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a
+      href="billett.html"
+      aria-label="Gå til billett"
+      data-i18n-aria="aria_tab_ticket"
+    >
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a
+      href="profil.html"
+      class="active"
+      aria-current="page"
+      aria-label="Gå til profil"
+      data-i18n-aria="aria_tab_profile"
+    >
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/profil-oppretting.js"></script>
+</body>
+</html>

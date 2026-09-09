@@ -1,0 +1,45 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: buss-app-backend
+
+  # PostgreSQL Database Configuration
+  datasource:
+    url: jdbc:postgresql://85.164.72.127:5432/bussapp
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: "$fsw2rR9Z5g#A!jFi6#6nP"
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 30000
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: app
+
+  # Flyway Configuration
+  flyway:
+    enabled: false
+
+# JWT Configuration
+jwt:
+  secret: mitt_hemmelige_jwt_secret_som_er_minst_256_bits_lang_for_sikkerhet_2024
+  expiration: 86400000
+
+# Logging configuration
+logging:
+  level:
+    no.ostfold.bussapp: DEBUG
+    org.springframework.security: DEBUG
+    org.flywaydb: INFO
+    org.hibernate.SQL: DEBUG
+    org.springframework.jdbc: DEBUG

@@ -1,0 +1,48 @@
+.loading-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #e2e2e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-box {
+  width: 199px;
+  height: 199px;
+  background-color: #c2c2c2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+}
+
+.logo-line-1 {
+  transform: rotate(45deg);
+}
+
+.logo-line-2 {
+  transform: rotate(-45deg);
+}
+
+.logo-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  color: #000;
+  text-align: center;
+}
+

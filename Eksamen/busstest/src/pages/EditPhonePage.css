@@ -1,0 +1,89 @@
+.edit-phone-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 44px 45px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 124px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.cancel-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  opacity: 0.7;
+}
+
+.form-section {
+  margin-bottom: 494px;
+}
+
+.form-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: #000;
+  margin-bottom: 46px;
+}
+
+.form-field {
+  margin-bottom: 24px;
+}
+
+.form-input {
+  width: 100%;
+  height: 37px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+.confirm-button {
+  width: 100%;
+  height: 52px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  opacity: 0.8;
+}
+

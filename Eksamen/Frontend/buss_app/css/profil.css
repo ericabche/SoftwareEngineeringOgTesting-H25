@@ -1,0 +1,373 @@
+/* =========================================================
+   PROFIL & PICKUP – LAYOUT, KOMPONENTER, OVERSTYRINGER
+   - Ingen skygger (tynn kantlinje)
+   - Sticky header + fast bunnmeny
+   - Ens chevron/pil på alle rader
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1) GLOBAL SCROLL / RAMMEVERK
+   --------------------------------------------------------- */
+
+html,
+body {
+  height: auto;
+  min-height: 100dvh;
+  overflow-y: auto;
+}
+
+/* ---------------------------------------------------------
+   2) PAGE-PROFIL – DESIGNTOKENS & LAYOUT
+   --------------------------------------------------------- */
+
+.page-profil {
+  overflow: visible;
+
+  --bg:       #F6F5F3;
+  --surface:  #FFFFFF;
+  --text:     #0B0C0C;
+  --muted:    #6B7280;
+  --line:     #E5E7EB;
+  --primary:  #7A150A;
+  --danger:   #D92D20;
+  --radius:   16px;
+
+  /* Slå av standard-skygger – bruker kantlinje */
+  --shadow: none;
+
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+}
+
+/* Hovedinnhold – plass til sticky header + navbar */
+.page-profil .container {
+  padding: 8px 16px calc(96px + env(safe-area-inset-bottom));
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Bunnmeny foran innhold, men under overlays */
+.navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+}
+
+/* ---------------------------------------------------------
+   3) APPBAR – PROFIL & PICKUP
+   --------------------------------------------------------- */
+
+/* Profil-header */
+.page-profil .appbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  padding: 20px 16px 8px;
+}
+
+.page-profil .appbar__title {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+/* Pickup-side med midtstilt tittel + link til venstre */
+.appbar--center {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #fff;
+  padding: 16px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.appbar--center .backlink {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  font-size: 15px;
+  color: #7A150A;
+  text-decoration: none;
+}
+
+.appbar--center .appbar__title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   4) SEKSJONER / TITLER
+   --------------------------------------------------------- */
+
+.section {
+  margin: 18px 0;
+}
+
+.section-title {
+  margin: 18px 2px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: .2px;
+}
+
+/* ---------------------------------------------------------
+   5) KORT, LISTER & CHEVRON
+   --------------------------------------------------------- */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: none;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list--grouped {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;        /* kant følger avrunding */
+  margin: 8px 0;
+}
+
+.list--grouped > li + li {
+  border-top: 1px solid var(--line);
+}
+
+/* Rad */
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 14px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.list-item:focus-visible {
+  outline: 2px solid #93C5FD;
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+
+/* Chevron via SVG-mask */
+.list-item::after {
+  content: "";
+  width: 8px;
+  height: 14px;
+  flex: 0 0 8px;
+  background: currentColor;
+  opacity: .35;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14'><path d='M1 1l6 6-6 6' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>") center/contain no-repeat;
+}
+
+/* Tekstnivåer i rader/kort */
+.li-title {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.li-sub {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------
+   6) PROFILKORT (TOPP)
+   --------------------------------------------------------- */
+
+#profile-guest.card--profile,
+#profile-loggedin.card--profile {
+  padding: 0;                 /* padding styres av .list-item */
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+#profile-guest .list-item,
+#profile-loggedin .list-item {
+  width: 100%;
+  padding: 16px;
+}
+
+/* ---------------------------------------------------------
+   7) KNAPPER
+   --------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--secondary {
+  background: #EEF2FF;
+  color: #1D4ED8;
+}
+
+.btn--danger {
+  width: 100%;
+  background: #FEE4E2;
+  color: var(--danger);
+  border-radius: 999px;
+  padding: 16px 18px;
+  font-weight: 800;
+}
+
+#logout-section {
+  margin-top: 22px;
+}
+
+/* ---------------------------------------------------------
+   8) HENT BILLETT (PAGE--PICKUP)
+   --------------------------------------------------------- */
+
+.page--pickup .container {
+  padding: 16px 16px 120px;      /* plass til navbar */
+}
+
+/* Kort rundt hentekode-skjemaet */
+.page--pickup .pickup-form {
+  background: #FFFFFF;
+  border-radius: 16px;
+  padding: 16px 16px 18px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 6px 20px rgba(0,0,0,.06);
+  border: 1px solid #E5E7EB;
+  max-width: 360px;
+}
+
+/* Fieldset/legend */
+.page--pickup .pickup-form fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.page--pickup .pickup-form .form-legend {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Boks rundt kodene */
+.page--pickup .code-inputs {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 14px 12px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background: #F9FAFB;
+}
+
+/* Selve input-boksene */
+.page--pickup .code-inputs input[type="text"] {
+  width: 100%;
+  max-width: 56px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.page--pickup .code-inputs input[type="text"]:focus {
+  outline: none;
+  border-color: #2563EB;
+  box-shadow: 0 0 0 1px #2563EB20;
+}
+
+/* Bindestreker mellom feltene */
+.page--pickup .code-inputs .dash {
+  text-align: center;
+  font-size: 18px;
+  color: #9CA3AF;
+}
+
+/* Clear-knappen (x) */
+.page--pickup .code-inputs .clear {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #E5E7EB;
+  background: #FFFFFF;
+  font-size: 18px;
+  line-height: 24px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+/* Hjelpetekst */
+.page--pickup .helptext {
+  margin: 8px 2px 0;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+/* Hent billett-knapp */
+.page--pickup .pickup-form .btn {
+  margin-top: 16px;
+  width: 100%;
+  border-radius: 999px;
+}
+
+/* Kontakt-tekst under kortet */
+.page--pickup .contact {
+  margin-top: 20px;
+  max-width: 360px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111827;
+}
+
+.page--pickup .contact a {
+  color: #2563EB;
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   9) TILGJENGELIGHET
+   --------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}

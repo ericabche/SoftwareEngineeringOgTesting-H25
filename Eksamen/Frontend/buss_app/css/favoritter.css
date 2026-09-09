@@ -1,0 +1,490 @@
+/* =========================================================
+   FAVORITTER / PAGE-FAVS
+   - Tokens
+   - Appbar
+   - Layout
+   - Empty state
+   - Lists
+   - Navbar
+   - Modal (base)
+   - Save-modal
+   - Search-sheet
+   - A11Y invisible text
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1) TOKENS / PAGE ROOT
+   --------------------------------------------------------- */
+
+.page-favs {
+  --bg: #F6F5F3;
+  --surface: #FFFFFF;
+  --text: #0B0C0C;
+  --muted: #6B7280;
+  --line: #E5E7EB;
+  --primary: #7A150A;
+
+  background: var(--bg);
+  color: var(--text);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+}
+
+/* ---------------------------------------------------------
+   2) APPBAR (tilbake • tittel • +)
+   --------------------------------------------------------- */
+
+.page-favs .appbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--bg);
+  padding: 12px 16px 8px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.page-favs .backlink {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.page-favs .appbar__title {
+  flex: 1;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.page-favs .appbar__action {
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------
+   3) LAYOUT (plass til navbar)
+   --------------------------------------------------------- */
+
+.page-favs .container {
+  padding: 8px 16px calc(96px + env(safe-area-inset-bottom));
+}
+
+/* ---------------------------------------------------------
+   4) EMPTY STATE
+   --------------------------------------------------------- */
+
+#empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: calc(100dvh - 100px);
+  padding: 0 24px;
+  text-align: center;
+  gap: 20px;
+}
+
+#empty .empty-text {
+  max-width: 35ch;
+  font-size: 17px;
+  line-height: 1.4;
+  margin: 0 auto;
+  color: #111;
+}
+
+/* ---------------------------------------------------------
+   5) LISTS (Adresser / Stoppesteder)
+   --------------------------------------------------------- */
+
+.group-title {
+  margin: 20px 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list--grouped {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.list--grouped > li + li {
+  border-top: 1px solid var(--line);
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 14px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.list-item::after {
+  content: "";
+  width: 8px;
+  height: 14px;
+  opacity: .35;
+  flex-shrink: 0;
+  background: currentColor;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='14' viewBox='0 0 8 14'><path d='M1 1l6 6-6 6' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>")
+      center/contain no-repeat;
+}
+
+.list-item .title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.list-item .meta {
+  font-size: 15px;
+  color: #6B7280;
+  margin-top: 2px;
+}
+
+/* ---------------------------------------------------------
+   6) NAVBAR (global stil)
+   --------------------------------------------------------- */
+
+.navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background: #fff;
+  border-top: 1px solid var(--line);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 10px 12px;
+  z-index: 20;
+}
+
+.navbar a {
+  color: #8b9097;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navbar a.active {
+  color: var(--primary);
+}
+
+/* ---------------------------------------------------------
+   7) MODAL BASE (både søk og lagre-modal)
+   --------------------------------------------------------- */
+
+.page-favs dialog.modal {
+  display: none;
+  border: 0;
+  margin: auto;
+  padding: 0;
+
+  background: #fff;
+  border-radius: 22px;
+
+  max-width: 600px;
+  width: calc(100% - 32px);
+  max-height: 85vh;
+  overflow: hidden;
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, .25);
+}
+
+.page-favs dialog.modal[open] {
+  display: block;
+  position: fixed;
+  inset: 10% auto auto auto;
+  z-index: 100;
+}
+
+.page-favs dialog.modal::backdrop {
+  background: rgba(0, 0, 0, .25);
+  backdrop-filter: blur(2px);
+}
+
+/* COMMON MODAL INNER STRUCTURE */
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.modal__header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.modal__content {
+  padding: 16px 18px 24px;
+  overflow-y: auto;
+}
+
+.backlink, .linklike {
+  background: none;
+  border: 0;
+  color: var(--primary);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.backlink:hover, .linklike:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------
+   8) SAVE-MODAL (dlg-save)
+   --------------------------------------------------------- */
+
+.radio-list {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.radio-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 12px;
+  background: #fff;
+}
+
+.radio-row + .radio-row {
+  border-top: 1px solid var(--line);
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 18px;
+  border: 0;
+  cursor: pointer;
+
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.btn--primary {
+  background: #7A150A;
+  color: #fff;
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------
+   9) SEARCH-SHEET (dlg-search)
+   --------------------------------------------------------- */
+
+#dlg-search.modal {
+  width: 100%;
+  max-width: 640px;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 20px 20px 0 0;
+
+  height: calc(100dvh - 64px);
+  overflow: hidden;
+
+  background: #fff;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, .15);
+}
+
+#dlg-search[open] {
+  display: block;
+  animation: slideUp .25s ease;
+}
+
+#dlg-search::backdrop {
+  background: rgba(0, 0, 0, .30);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+#dlg-search .modal__header {
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 20px;
+}
+
+#dlg-search .modal__header h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+#dlg-search .modal__content {
+  height: calc(100% - 56px);
+  overflow-y: auto;
+  padding: 12px 0 8px;
+}
+
+/* --- Search field --- */
+
+#dlg-search fieldset,
+#dlg-search legend,
+#dlg-search label {
+  display: none !important;
+}
+
+#dlg-search .input-wrap {
+  position: relative;
+  margin: 12px 16px 8px;
+}
+
+#dlg-search input[type="search"] {
+  width: 100%;
+  height: 48px;
+
+  padding: 12px 40px 12px 14px;
+
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+
+  font-size: 16px;
+  color: #111827;
+  outline: none;
+  caret-color: #111827;
+}
+
+#dlg-search input[type="search"]::placeholder {
+  color: #9AA1B2;
+}
+
+#dlg-search .clear {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+
+  background: #fff;
+  color: #6B7280;
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+/* --- Recent + suggestions list --- */
+
+#dlg-search .subtle {
+  margin: 18px 20px 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #6B7280;
+}
+
+#dlg-search .picklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+#dlg-search .picklist li {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  border-bottom: 1px solid #E5E7EB;
+  cursor: pointer;
+
+  transition: background .15s ease;
+}
+
+#dlg-search .picklist li:last-child {
+  border-bottom: none;
+}
+
+@media (hover:hover) {
+  #dlg-search .picklist li:hover {
+    background: #F9FAFB;
+  }
+}
+
+#dlg-search .picklist .title {
+  font-size: 17px;
+  font-weight: 500;
+  color: #111827;
+}
+
+#dlg-search .picklist .meta {
+  font-size: 15px;
+  color: #6B7280;
+  line-height: 1.35;
+}
+
+/* ---------------------------------------------------------
+   10) ACCESSIBILITY HELPERS
+   --------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute !important;
+  clip: rect(1px,1px,1px,1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}

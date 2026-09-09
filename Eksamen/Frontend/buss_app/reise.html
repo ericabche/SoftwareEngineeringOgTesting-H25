@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title data-i18n="app_title">Østfold Kollektiv</title>
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="ikoner/css/all.min.css">
+  </head>
+
+  <body class="page-reise">
+    <!-- ØVERST: Kart -->
+    <header
+      id="map"
+      class="map"
+      aria-label="Kart"
+      data-i18n-aria="map_title"
+    >
+      <h1 data-i18n="map_title">Kart</h1>
+    </header>
+
+    <!-- Sheet over kartet -->
+    <div
+      id="sheet"
+      class="sheet"
+      role="dialog"
+      aria-label="Reise"
+      aria-modal="false"
+    >
+      <button
+        id="grab"
+        class="grab"
+        type="button"
+        aria-label="Dra for å utvide eller krympe"
+      >
+      </button>
+
+      <main class="sheet-content">
+        <!-- ===================== SØKEBOKS ===================== -->
+        <section
+          id="search-box"
+          class="box search-box"
+          aria-label="Søk etter reise"
+        >
+          <nav id="mode-segment" class="segment" aria-label="Visning">
+            <button
+              id="btn-journey"
+              class="active"
+              type="button"
+              aria-pressed="true"
+              data-i18n="tab_find_journey"
+            >
+              Finn reise
+            </button>
+            <button
+              id="btn-departures"
+              type="button"
+              aria-pressed="false"
+              data-i18n="tab_departures"
+            >
+              Se avganger
+            </button>
+          </nav>
+
+          <!-- Søke-feltene -->
+          <form id="journey-form" role="search" action="#" novalidate>
+            <fieldset class="inputs">
+              <legend class="sr-only">Reisesøk</legend>
+
+              <div class="input-column">
+                <!-- Venstre side: Fra + Til over hverandre -->
+                <div class="input-group">
+                  <div class="input-wrap" id="from-wrap">
+                    <label for="from" data-i18n="label_from">Fra</label>
+                    <input
+                      id="from"
+                      name="from"
+                      type="text"
+                      placeholder="Din posisjon"
+                      autocomplete="off"
+                      data-i18n-placeholder="ph_from_position"
+                    >
+                  </div>
+
+                  <div class="input-wrap" id="to-wrap">
+                    <label for="to" data-i18n="label_to">Til</label>
+                    <input
+                      id="to"
+                      name="to"
+                      type="text"
+                      placeholder="Hvor skal du?"
+                      autocomplete="off"
+                      data-i18n-placeholder="ph_to_where"
+                    >
+                  </div>
+                </div>
+
+                <!-- Høyre side: bytte-om-knappen som fyller hele høyden -->
+                <button
+                  id="btn-swap"
+                  type="button"
+                  class="swap-btn"
+                  aria-label="Bytt om fra og til"
+                  data-i18n-aria="aria_swap"
+                    >
+                  <i class="fa-solid fa-repeat"></i>
+                </button>
+              </div>
+            </fieldset>
+          </form>
+        </section>
+
+        <!-- REISERESULTATER (vises når både Fra og Til er satt) -->
+        <section
+          id="journey-results"
+          class="box"
+          hidden
+          aria-labelledby="results-title"
+        >
+          <h2 id="results-title" data-i18n="heading_results">
+            Forslag til reise
+          </h2>
+          <ul id="journey-list" class="journeys"></ul>
+        </section>
+
+        <!-- AVGANGER (brukes i "Se avganger") -->
+        <section
+          id="departures"
+          class="box"
+          hidden
+          aria-labelledby="dep-title"
+        >
+          <h2 id="dep-title" data-i18n="heading_departures">Avganger</h2>
+          <ul class="departures" aria-live="polite"></ul>
+        </section>
+
+        <!-- I nærheten -->
+        <section id="nearby" class="box" aria-labelledby="nearby-title">
+          <h2 id="nearby-title" data-i18n="heading_nearby">I nærheten</h2>
+          <p class="placeholder">
+            Kart eller liste med holdeplasser
+          </p>
+        </section>
+
+        <!-- Favoritter -->
+        <section id="favorites" class="box" aria-labelledby="favorites-title">
+          <h2 id="favorites-title" data-i18n="heading_favorites">
+            Favoritter
+          </h2>
+          <p class="placeholder">Favorittsteder</p>
+        </section>
+
+        <button
+          class="add-fav"
+          type="button"
+          data-i18n="btn_add_favorite"
+        >
+          + Legg til ny favoritt
+        </button>
+      </main>
+    </div><!-- /#sheet -->
+
+    <!-- Bunnmeny -->
+    <nav class="navbar" aria-label="Hovedmeny">
+      <a href="reise.html" class="active">
+        <i class="fa-solid fa-bus" aria-hidden="true"></i>
+        <span data-i18n="nav.travel">Reise</span>
+      </a>
+      <a href="billett.html">
+        <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+        <span data-i18n="nav.ticket">Billett</span>
+      </a>
+      <a href="profil.html">
+        <i class="fa-solid fa-user" aria-hidden="true"></i>
+        <span data-i18n="nav.profile">Profil</span>
+      </a>
+    </nav>
+
+    <!-- ===================== SCRIPT ===================== -->
+    <script src="js/lang.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/sheets.js"></script>
+  </body>
+</html>

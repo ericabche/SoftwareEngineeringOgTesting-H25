@@ -1,0 +1,233 @@
+/* ==========================
+   Felles tokens
+   ========================== */
+
+.page-register{
+  --bg:#F6F5F3;
+  --surface:#FFFFFF;
+  --text:#0B0C0C;
+  --muted:#6B7280;
+  --line:#E5E7EB;
+  --primary:#7A150A;
+
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans";
+}
+
+/* ==========================
+   Appbar
+   ========================== */
+
+.page-register .appbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 16px 8px;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+
+.page-register .backlink{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  font-size:16px;
+}
+
+.page-register .appbar__title{
+  margin:0;
+  flex:1;
+  text-align:center;
+  font-size:20px;
+  font-weight:700;
+}
+
+.page-register .appbar__spacer{
+  width:60px;
+}
+
+/* ==========================
+   Layout
+   ========================== */
+
+.page-register .container{
+  padding:16px 16px calc(96px + env(safe-area-inset-bottom));
+}
+
+/* ==========================
+   Kort (steginnhold)
+   ========================== */
+
+.register-card{
+  max-width:420px;
+  margin:32px auto 0;
+  padding:24px 18px 26px;
+  background:var(--surface);
+  border-radius:20px;
+  border:1px solid var(--line);
+}
+
+.question{
+  margin:0 0 18px;
+  font-size:20px;
+  font-weight:700;
+}
+
+/* ==========================
+   Felt + input
+   ========================== */
+
+.field{
+  margin-bottom:12px;
+}
+
+.field input{
+  width:100%;
+  border-radius:12px;
+  border:1px solid var(--line);
+  padding:12px 12px;
+  font-size:16px;
+  background:#F9FAFB;
+}
+
+.field input:focus{
+  outline:2px solid #93C5FD;
+  outline-offset:1px;
+}
+
+/* Telefonfelt med prefiks */
+.input-phone{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  padding:0 10px 0 10px;
+  background:#F9FAFB;
+}
+
+.phone-prefix{
+  font-size:15px;
+  color:#111827;
+  white-space:nowrap;
+}
+
+.input-phone input{
+  border:0;
+  padding:12px 4px 12px 0;
+  background:transparent;
+  flex:1;
+}
+
+/* ==========================
+   Hjelpetekst / personvern
+   ========================== */
+
+.helper-text{
+  margin:4px 0 4px;
+  font-size:13px;
+  color:#6B7280;
+}
+
+.privacy-link{
+  display:inline-block;
+  margin-bottom:18px;
+  font-size:13px;
+  color:#6B7280;
+  text-decoration:underline;
+}
+
+/* ==========================
+   Knapper
+   ========================== */
+
+.btn{
+  display:inline-block;
+  border:0;
+  border-radius:999px;
+  padding:14px 18px;
+  font-weight:700;
+  font-size:16px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.btn--primary{
+  background:#7A150A;
+  color:#FFFFFF;
+}
+
+.btn--block{
+  width:100%;
+}
+
+.register-btn{
+  margin-top:8px;
+  display:block;
+}
+
+/* ==========================
+   Navbar (samme stil)
+   ========================== */
+
+.navbar{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:#FFFFFF;
+  border-top:1px solid var(--line);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:10px 12px;
+  z-index:20;
+}
+
+.navbar a{
+  text-decoration:none;
+  font-weight:600;
+  color:#8B9097;
+}
+
+.navbar a.active{
+  color:#7A150A;
+}
+
+/* ==========================
+   Tilgjengelighet
+   ========================== */
+
+.visually-hidden{
+  position:absolute !important;
+  clip:rect(1px,1px,1px,1px);
+  clip-path:inset(50%);
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+/* ==========================
+   Feil / validering
+   ========================== */
+
+.error-text{
+  margin-top:4px;
+  font-size:13px;
+  color:#B91C1C;        /* rød */
+}
+
+.field-error{
+  border-color:#FCA5A5 !important;
+  background:#FEF2F2 !important;
+}
+
+/* Når knappen er “inaktiv” (JS styrer aria-disabled) */
+.btn--disabled{
+  opacity:.55;
+}

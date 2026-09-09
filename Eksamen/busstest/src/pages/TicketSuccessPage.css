@@ -1,0 +1,74 @@
+.ticket-success-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 45px 30px 97px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-header {
+  width: 100%;
+  margin-bottom: 91px;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  text-align: center;
+}
+
+.success-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+
+.qr-code-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.qr-circle {
+  width: 330px;
+  height: 159px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  border: 2px solid #c2c2c2;
+}
+
+.success-message {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  text-align: center;
+}
+
+.view-ticket-btn {
+  width: 330px;
+  height: 50px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+  margin-top: 24px;
+}
+
+.view-ticket-btn:hover {
+  opacity: 0.8;
+}
+

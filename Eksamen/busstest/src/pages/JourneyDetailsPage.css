@@ -1,0 +1,119 @@
+.journey-details-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding-bottom: 97px;
+}
+
+.map-container {
+  width: 100%;
+  height: 422px;
+  position: relative;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  background-color: #c2c2c2;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+}
+
+.map-line {
+  transform: rotate(53deg);
+}
+
+.map-line-2 {
+  transform: rotate(-53deg);
+}
+
+.map-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  color: #000;
+  z-index: 1;
+}
+
+.journey-info {
+  padding: 24px;
+}
+
+.location-name {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+.departures-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  color: #000;
+  margin-bottom: 24px;
+}
+
+.departures-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.departure-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #d9d9d9;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.bus-number {
+  background-color: #c2c2c2;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  min-width: 45px;
+  text-align: center;
+}
+
+.departure-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.destination {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.time {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="register.phone_title">Profiloppretting – Telefon</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/registrer.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page-register">
+
+  <!-- Appbar -->
+  <header class="appbar" role="banner" aria-label="Toppmeny">
+    <a href="login.html" class="backlink" data-i18n="global.back">
+      Tilbake
+    </a>
+    <h1 class="appbar__title" data-i18n="register.phone_title">
+      Profiloppretting
+    </h1>
+    <span class="appbar__spacer" aria-hidden="true"></span>
+  </header>
+
+  <main class="container">
+    <section class="register-card" aria-labelledby="step1-title">
+      <h2 id="step1-title" class="question" data-i18n="register.phone_question">
+        Hei! Hva er nummeret ditt?
+      </h2>
+
+      <div class="field">
+        <label
+          for="phone"
+          class="visually-hidden"
+          data-i18n="register.phone_label"
+        >
+          Telefonnummer
+        </label>
+        <div class="input-phone">
+          <span class="phone-prefix">+47</span>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputmode="tel"
+            autocomplete="tel"
+            placeholder="99 99 99 99"
+          />
+        </div>
+        <p id="phone-error" class="error-text" role="alert" hidden></p>
+      </div>
+
+      <p class="helper-text" data-i18n="register.phone_helper">
+        Når du går videre, samtykker du til at vi kan bruke telefonnummeret til å logge deg inn.
+      </p>
+
+      <a href="personvern.html" class="privacy-link" data-i18n="register.phone_privacy">
+        Les mer i personvernerklæringen
+      </a>
+
+      <!-- JS hindrer navigasjon hvis ugyldig -->
+      <a
+        href="registrer-epost.html"
+        id="btn-next-phone"
+        class="btn btn--primary btn--block register-btn btn--disabled"
+        aria-disabled="true"
+        data-i18n="global.next"
+      >
+        Neste
+      </a>
+    </section>
+  </main>
+
+  <!-- Bunnmeny -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus" aria-hidden="true"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket" aria-hidden="true"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+    <a href="profil.html" class="active" aria-current="page">
+      <i class="fa-solid fa-user" aria-hidden="true"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <!-- ===================== SCRIPT ===================== -->
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="profile.edit_email_title_tab">Endre e-post</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profil.css">
+  <link rel="stylesheet" href="ikoner/css/all.min.css">
+</head>
+<body class="page page--edit">
+
+  <header class="appbar" role="banner">
+    <nav aria-label="Tilbake">
+      <a class="backlink" href="profil-detaljer.html" data-i18n="global.back">
+        Tilbake
+      </a>
+    </nav>
+    <h1 class="appbar__title" data-i18n="profile.field_email">
+      E-post
+    </h1>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <form class="form" action="#" method="post" novalidate aria-labelledby="legend">
+      <fieldset>
+        <legend
+          id="legend"
+          class="form-legend"
+          data-i18n="profile.edit_email_legend">
+          Skriv inn den nye e-posten din
+        </legend>
+
+        <label
+          for="email"
+          class="visually-hidden"
+          data-i18n="profile.edit_email_label">
+          E-post
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="navn@domene.no"
+          data-i18n-placeholder="profile.edit_email_placeholder"
+          required>
+      </fieldset>
+
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn--primary btn--block"
+          data-i18n="profile.edit_email_submit">
+          Bekreft
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- ====================== BUNNMENY ====================== -->
+  <nav class="navbar" aria-label="Hovedmeny">
+    <a href="reise.html">
+      <i class="fa-solid fa-bus"></i>
+      <span data-i18n="nav.travel">Reise</span>
+    </a>
+
+    <a href="billett.html">
+      <i class="fa-solid fa-ticket"></i>
+      <span data-i18n="nav.ticket">Billett</span>
+    </a>
+
+    <a href="profil.html" class="active">
+      <i class="fa-solid fa-user"></i>
+      <span data-i18n="nav.profile">Profil</span>
+    </a>
+  </nav>
+
+  <script src="js/lang.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>

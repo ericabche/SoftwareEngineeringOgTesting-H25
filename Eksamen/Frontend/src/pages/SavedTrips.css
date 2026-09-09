@@ -1,0 +1,58 @@
+.page-saved {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #f5f6f8;
+  min-height: 100vh;
+  padding-bottom: 97px;
+}
+
+.appbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #fff;
+  border-bottom: 1px solid #e6e8ec;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.backlink {
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #0e1116;
+  text-decoration: none;
+}
+
+.appbar__title {
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  color: #0e1116;
+  margin: 0;
+  flex: 1;
+}
+
+.appbar__spacer {
+  width: 32px;
+}
+
+.container {
+  padding: 16px;
+}
+
+.empty-state {
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.empty-text {
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-size: 15px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+

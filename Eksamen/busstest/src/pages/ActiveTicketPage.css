@@ -1,0 +1,96 @@
+.active-ticket-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 45px 30px 97px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 91px;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  opacity: 0.7;
+}
+
+.ticket-card {
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  padding: 24px;
+  margin-bottom: 31px;
+}
+
+.ticket-header {
+  margin-bottom: 16px;
+}
+
+.ticket-type {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+}
+
+.ticket-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ticket-validity {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+.view-receipt-btn {
+  width: 100%;
+  height: 50px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  color: #000;
+  cursor: pointer;
+}
+
+.view-receipt-btn:hover {
+  opacity: 0.8;
+}
+

@@ -1,0 +1,98 @@
+.ticket-page {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  background-color: #e2e2e2;
+  min-height: 100vh;
+  padding: 44px 41px 97px;
+}
+
+.page-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #000;
+  margin-bottom: 62px;
+}
+
+.ticket-container {
+  width: 305px;
+  height: 99px;
+  margin-bottom: 23px;
+}
+
+.ticket-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.purchase-button {
+  width: 305px;
+  height: 44px;
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  margin-bottom: 56px;
+}
+
+.purchase-button:hover {
+  opacity: 0.8;
+}
+
+.quick-purchase-section {
+  margin-top: 56px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000;
+}
+
+.see-all-btn {
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.quick-purchase-items {
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.quick-item {
+  width: 301px;
+  height: 50px;
+  background-color: #d9d9d9;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.item-line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+}
+
